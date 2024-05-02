@@ -13,7 +13,17 @@ function validate()
 {
 var email=document.getElementById("email").value;
 var password=document.getElementById("password").value;
-if(email=="cooledu@gmail.com"&& password=="user")
+if(email=="daham.vida@gmail.com"&& password=="Pajanith@123")
+{
+	window.open("https://sites.google.com/view/cooleducations");
+	return false;
+
+}
+else
+{	
+    window.open("alert.html");
+}
+if(email=="pasividanagama@gmail.com"&& password=="Pajanith@123")
 {
 	window.open("https://sites.google.com/view/cooleducations");
 	return false;
@@ -24,6 +34,15 @@ else
     window.open("alert.html");
 }
 
+if(email=="sudeshrathnayake@gmail.com"&& password=="Sudesh@123")
+{
+	window.open("https://sites.google.com/view/cooleducations");
+	return false;
 
+}
+else
+{	
+    window.open("alert.html");
+}
 
 }
