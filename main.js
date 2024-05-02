@@ -19,13 +19,6 @@ if(email=="daham.vida@gmail.com"&& password=="Pajanith@123")
 	return false;
 
 }
-
-elif(email=="pasividanagama@gmail.com"&& password=="Pajanith@123")
-{
-	window.open("https://sites.google.com/view/cooleducations");
-	return false;
-
-}
 else
 {	
     window.open("alert.html");
