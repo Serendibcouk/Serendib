@@ -35,7 +35,7 @@ if(email=="sudeshrathnayake@gmail.com"&& password=="Sudesh@123")
 
 else
 {	
-    window.open("alert.html");
+    window.open("adminalert.html");
 }
 
 
