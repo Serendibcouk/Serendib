@@ -150,6 +150,34 @@ form.sign-in-form {
 .btn:hover {
   background-color: #4d84e2;
 }
+
+a {
+  width: 150px;
+  background-color: #5995fd;
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 590;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+  display: flex;
+  text-align:center;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none;
+  font-family: sans-serif;
+  vertical-align: middle;
+}
+
+a:hover {
+  background-color: #4d84e2;
+}
+
 .panels-container {
   position: absolute;
   height: 100%;
