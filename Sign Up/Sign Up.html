@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="signupstyle2.css" />
+    <link rel="stylesheet" href="signupstyle.css" />
+    <title>Serendib</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form name="submit-to-google-sheet" action="#" class="sign-in-form">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h2 class="title" a href="">Sign Up</h2>
+            
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" name="name" class="input" id="email" placeholder="Name" required><br><br>
+            </div>
+
+            <div class="input-field">
+              <i class="fa fa-envelope"></i>
+              <input type="email" name="email" class="input" id="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-field">
+              <i class="fa fa-bars"></i>
+              <select type="radio" name="gender" placeholder="Gender" required>
+                <option name="gender" value="gender" disable selected hidden>Gender</option>
+                <option name="gender" value="male">Male</option>
+                <option name="gender" value="female">Female</option>
+                <option name="gender" value="gaylesbian">Gay/Lesbian</option>
+                <option name="gender" value="transgender">Transgender</option>
+                <option name="gender" value="dontknow">Don't know</option>
+                <option name="gender" value="prefernottosay">Prefer not to say</option>
+              </select>
+            </div>
+
+
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <i class="ri-eye-off-line login__eye" id="login-eye"></i>
+              <div class="password-container">
+              <input type="password" name="" class="input" id="password" name="password" placeholder="Password" required>
+
+            </div>
+            </div>
+
+            <div class="strength-container">
+              <p class="title">
+                Password strength:
+                <span class="strength-text"></span>
+              </p>
+              <div class="strength-bar-wrapper">
+                <div id="strength-bar"></div>
+              </div>
+              <p class="strength-description">
+                Min: 7 characters. <br>
+                Max: 12 characters. <br>
+                Try use <strong>lowercasing</strong> and <strong>uppercasing</strong>, <strong>numbers</strong> and <strong>symbols</strong>.
+              </p>
+              <div class="arrow"></div>
+              </div>
+
+
+
+              <div class="input-field">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="confirmpassword" name="confirmpassword" class="input" placeholder="Confirm Password" required>
+                </div>
+
+              
+
+              <script>
+                let strengthContainer = document.querySelector(".strength-container");
+                let strengthBar = document.querySelector("#strength-bar");
+                let strengthText = document.querySelector(".strength-text");
+
+                  password.addEventListener("focus", function(){
+                      strengthContainer.style.display = "block";
+                  });
+                  password.addEventListener("blur", function(){
+                      strengthContainer.style.display = "none";
+                  });
+                  function setStrength(value){
+            strengthBar.style.width = value + "%";
+        }
+
+        function setColorAndText(color, text){
+            strengthBar.style.backgroundColor = color;
+            strengthText.innerHTML = text;
+            strengthText.style.color = color;
+        }
+
+        function clearStrength(){
+            strengthBar.style.width = 0;
+            strengthBar.style.backgroundColor = "";
+            strengthText.innerHTML = "";
+        }
+
+        password.addEventListener("keyup", checkPasswordStrength);
+        function checkPasswordStrength(){
+            let strength = 0;
+
+            if(password.value == ""){
+                clearStrength();
+                return false;
+            }
+
+            if(password.value.match(/\s/)){
+                setColorAndText("red", "White space is not allowed");
+                return false;
+            }
+
+            if(password.value.match(/<|>/)){
+                setColorAndText("red", "< > characters are not allowed");
+                return false;
+            }
+
+            if(password.value.length > 12){
+                setColorAndText("red", "Password is greater than 12 char.");
+                return false;
+            }
+
+            if(password.value.length < 7){
+                strength = 20;
+                setColorAndText("red", "Too short"); // short
+            }else{
+                
+                let lowerCase = password.value.match(/[a-z]/);
+                let upperCase = password.value.match(/[A-Z]/);
+                let numbers = password.value.match(/[0-9]/);
+                let specialCharacters = password.value.match(/[\!\~\@\&\#\$\%\^\&\*\(\)\{\}\?\-\_\+\=]/);
+
+                if(lowerCase || upperCase || numbers || specialCharacters){
+                    strength = 40;
+                    setColorAndText("red", "Weak"); // weak
+                }
+
+                if( 
+                    (lowerCase && upperCase) || (lowerCase && numbers) || (lowerCase && specialCharacters) ||
+                    (upperCase && numbers) || (upperCase && specialCharacters) || (numbers && specialCharacters)
+                )
+                {
+                    strength = 60;
+                    setColorAndText("orange", "Medium");	// medium		
+                } 
+                
+                if( (lowerCase && upperCase && numbers) || (lowerCase && upperCase && specialCharacters) ||
+                    (lowerCase && numbers && specialCharacters) ||  (upperCase && numbers && specialCharacters)
+                )
+                {
+                    strength = 80;
+                    setColorAndText("#088f08", "Strong");	// strong
+                }
+
+                if( lowerCase && upperCase && numbers && specialCharacters ) 
+                {
+                    strength = 100;
+                    setColorAndText("green", "Very Strong");	// very strong
+                }
+            }
+            setStrength(strength);
+        }
+              </script>
+              <style>
+                .strength-container{
+                  width:  250px;
+                  padding: 15px 15px;
+                  position: absolute;
+                  left: 280px;
+                  top: 325px;
+                  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+                  display: none;
+                  background-color: #fff;
+                }
+                .strength-container .title{
+                  font-size: 14px;
+                  font-weight: bold;
+                  color: #777;
+                  line-height: 20px;
+                }
+                
+                .strength-bar-wrapper{
+                  width: 100%;
+                  height: 3px;
+                  background-color: #e9e9e9;
+                  border-radius: 3px;
+                }
+                #strength-bar{
+                  width:  0;
+                  height:  3px;
+                  margin-top: 10px;
+                  transition: width 0.2s;
+                  border-radius: 3px;
+                }
+              </style>
+
+              <input type="submit" value="Sign Up" class="btn solid">
+              <div class="popup" id="popup">
+                <img src="tick.png">
+                <h2>Thank you!</h2>
+                <p>Your data successfully submitted.We will confirm your request within 24 hours. We will email you shortly.</p>
+                <button type="button" onclick="document.location='https://serendibcouk.github.io/Serendib/index.html'" >OK</button>
+              </div>
+              <p1>Already have an account:    
+                <a href="https://serendibcouk.github.io/Serendib/index.html">  Login</a>
+              </p1>
+              <span id="success" ></span>
+
+
+
+          </form>
+
+
+          <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbytF4DX-UU_cZLeOX71cM68A7RQLdPVRtZAdMc7zDF0uOIaZMZ0ii5lLjUumEvULFL7TQ/exec'
+            const form = document.forms['submit-to-google-sheet']
+            const success = document.getElementById('success');
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                  popup.classList.add("open-popup");
+
+        
+                  setTimeout(function()
+                  {
+                    success.innerHTML="";
+                  },5000)
+                  form.reset();
+                })
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+
+
+          <form action="#" class="sign-up-form">
+            <h2 class="title">SERENDIB</h2>
+            <p>Introducing Serendib, where culinary excellence meets the vibrant flavors of Sri Lanka! Elevate your kitchen adventures with our exquisite range of spices, meticulously crafted and exported directly from the heart of this island paradise.
+
+From the fiery kick of our Chilli Powder to the aromatic allure of our Curry Powder, every Serendib product is a testament to centuries of spice mastery. Our Chilli Pieces pack a punch of flavor, while our Pepper Powder adds depth and complexity to any dish.
+
+Why settle for ordinary when you can experience the extraordinary? With Serendib, you're not just purchasing spices – you're embarking on a sensory journey, where each sprinkle and pinch transports you to the sun-kissed shores and lush landscapes of Sri Lanka.
+
+Indulge your senses, ignite your palate, and savor the authentic taste of Serendib. Because when it comes to quality, flavor, and satisfaction, there's simply no substitute. Discover the magic of Serendib – where every spice tells a story, and every meal becomes a masterpiece.
+              
+                 </p>
+            
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>SERENDIB</h3>
+            <p>
+              Introducing Serendib
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Learn More
+            </button>
+          </div>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>One of us ?</h3>
+            <p>
+              Click Sign in to Enter SERENDIB
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Sign in
+            </button>
+          </div>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script src="signupmain.js"></script>
+      <style>
+        .login__eye {
+          position: absolute;
+          right: 20px;
+          top: 1px;
+          z-index: 10;
+          cursor: pointer;
+        }
+       </style>
+      <script>
+            const showHiddenPass = (loginPass, loginEye) =>{
+               const input = document.getElementById(loginPass),
+                     iconEye = document.getElementById(loginEye)
+            
+               iconEye.addEventListener('click', () =>{
+                  // Change password to text
+                  if(input.type === 'password'){
+                     // Switch to text
+                     input.type = 'text'
+            
+                     // Icon change
+                     iconEye.classList.add('ri-eye-line')
+                     iconEye.classList.remove('ri-eye-off-line')
+                  } else{
+                     input.type = 'password'
+                     iconEye.classList.remove('ri-eye-line')
+                     iconEye.classList.add('ri-eye-off-line')
+                  }
+               })
+            }
+            
+            showHiddenPass('password','login-eye')
+       </script>
+  </body>
+</html>
