@@ -12,7 +12,7 @@
     <title>Serendib</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="blur">
       <div class="forms-container">
         <div class="signin-signup">
           <form action="#" class="sign-in-form">
@@ -32,7 +32,7 @@
 
             </div>
 
-              <input type="submit" value="Login" class="btn solid" onclick="validate()">
+              <input type="submit" value="Login" class="btn solid" onclick="validate()" >
             <a href="https://serendibcouk.github.io/Serendib/Sign%20Up/Sign%20Up.html">Sign Up</a>
             <a href="https://serendibcouk.github.io/Serendib/adminindex.html">For Admins</a>
             
@@ -115,5 +115,20 @@ Indulge your senses, ignite your palate, and savor the authentic taste of Serend
             
             showHiddenPass('password','login-eye')
        </script>
+
+<div class="popup" id="popup">
+  <img src="tick.png">
+  <h2>Error</h2>
+  <p>Incorrect username or password</p>
+  <button type="button" onclick="document.location='https://serendibcouk.github.io/Serendib/index.html'" >OK</button>
+</div>
+
+<script type="text/javascript">
+  function toggle(){
+    var blur = document.getElementById('blur');
+    blur.classList.toggle('active')
+  }
+</script>
+        
   </body>
 </html>
